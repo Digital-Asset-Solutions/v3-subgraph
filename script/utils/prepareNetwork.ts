@@ -19,6 +19,7 @@ export enum NETWORK {
   ZKSYNC_ERA = 'zksync-era',
   ZORA = 'zora-mainnet',
   EDEN_TESTNET = 'eden-testnet',
+  SOMNIA = 'somnia',
 }
 
 export enum SUBGRAPH_TYPE {
