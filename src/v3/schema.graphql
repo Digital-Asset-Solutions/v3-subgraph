@@ -29,13 +29,13 @@ type Factory @entity(immutable: false) {
 }
 
 # stores for USD calculations
-type Bundle @entity(immutable: true) {
+type Bundle @entity(immutable: false) {
   id: ID!
   # price of ETH in usd
   ethPriceUSD: BigDecimal!
 }
 
-type Token @entity(immutable: true) {
+type Token @entity(immutable: false) {
   # token address
   id: Bytes!
   # token symbol
@@ -74,7 +74,7 @@ type Token @entity(immutable: true) {
   tokenDayData: [TokenDayData!]! @derivedFrom(field: "token")
 }
 
-type Pool @entity(immutable: true) {
+type Pool @entity(immutable: false) {
   # pool address
   id: Bytes!
   # creation
@@ -141,7 +141,7 @@ type Pool @entity(immutable: true) {
   ticks: [Tick!]! @derivedFrom(field: "pool")
 }
 
-type Tick @entity(immutable: true) {
+type Tick @entity(immutable: false) {
   # format: <pool address>#<tick index>
   id: ID!
   # pool address
@@ -164,7 +164,7 @@ type Tick @entity(immutable: true) {
   createdAtBlockNumber: BigInt!
 }
 
-type Transaction @entity(immutable: true) {
+type Transaction @entity(immutable: false) {
   # txn hash
   id: ID!
   # block txn was included in
@@ -182,7 +182,7 @@ type Transaction @entity(immutable: true) {
   collects: [Collect]! @derivedFrom(field: "transaction")
 }
 
-type Mint @entity(immutable: true) {
+type Mint @entity(immutable: false) {
   # transaction hash + "#" + index in mints Transaction array
   id: ID!
   # which txn the mint was included in
@@ -217,7 +217,7 @@ type Mint @entity(immutable: true) {
   logIndex: BigInt
 }
 
-type Burn @entity(immutable: true) {
+type Burn @entity(immutable: false) {
   # transaction hash + "#" + index in mints Transaction array
   id: ID!
   # txn burn was included in
@@ -250,7 +250,7 @@ type Burn @entity(immutable: true) {
   logIndex: BigInt
 }
 
-type Swap @entity(immutable: true) {
+type Swap @entity(immutable: false) {
   # transaction hash + "#" + index in swaps Transaction array
   id: ID!
   # pointer to transaction
@@ -283,7 +283,7 @@ type Swap @entity(immutable: true) {
   logIndex: BigInt
 }
 
-type Collect @entity(immutable: true) {
+type Collect @entity(immutable: false) {
   # transaction hash + "#" + index in collect Transaction array
   id: ID!
   # pointer to txn
@@ -308,7 +308,7 @@ type Collect @entity(immutable: true) {
   logIndex: BigInt
 }
 
-type Flash @entity(immutable: true) {
+type Flash @entity(immutable: false) {
   # transaction hash + "-" + index in collect Transaction array
   id: ID!
   # pointer to txn
